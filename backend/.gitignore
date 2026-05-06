@@ -1,0 +1,77 @@
+# =========================
+# DEPENDÊNCIAS
+# =========================
+node_modules/
+
+# =========================
+# VARIÁVEIS DE AMBIENTE
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# CREDENCIAIS GOOGLE (MUITO IMPORTANTE)
+# =========================
+credentials.json
+token.json
+*.key
+*.pem
+
+# =========================
+# LOGS
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# ARQUIVOS TEMPORÁRIOS
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# UPLOADS (caso salve local)
+# =========================
+uploads/
+
+# =========================
+# BUILD / DIST
+# =========================
+dist/
+build/
+
+# =========================
+# CACHE
+# =========================
+.cache/
+.npm/
+
+# =========================
+# SISTEMA OPERACIONAL
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# EDITORES / IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# TESTES / COBERTURA
+# =========================
+coverage/
+
+# =========================
+# OUTROS
+# =========================
+*.sqlite
+*.db
