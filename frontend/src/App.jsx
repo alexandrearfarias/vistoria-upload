@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
-  const DEV_MODE = true;
+  const DEV_MODE = false;
 
   if (!user && !DEV_MODE) {
     return <Login onLogin={setUser} />;
