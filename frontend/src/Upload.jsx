@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { useForm } from 'react-hook-form';
+import { googleLogout } from "@react-oauth/google";
 
-function Upload({ user }) {
+function Upload({ user, onLogout }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [arquivos, setArquivos] = useState([]);
     const fileInputRef = useRef();
@@ -10,6 +11,20 @@ function Upload({ user }) {
         const lista = Array.from(files);
         setArquivos((prev) => [...prev, ...lista]);
     };
+
+    const handleLogout = () => {
+        if (user?.acess_token && window.google?.accounts?.oauth2) {
+            window.google.accounts.oauth2.revoke(user.access_token, () => {
+                googleLogout();
+                onLogout();
+            });
+
+            return;
+        }
+
+        googleLogout();
+        onLogout();
+    }
 
     const removerArquivo = (index) => {
         const novaLista = [...arquivos];
@@ -40,7 +55,7 @@ function Upload({ user }) {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${user?.access_token}`
-                }, 
+                },
                 body: formData
             });
 
@@ -64,9 +79,13 @@ function Upload({ user }) {
                     <div className="col-12 col-sm-10 col-md-6 col-lg-4">
                         <div className="card shadow">
 
-                            <div className="card-header text-center">
-                                <i className="bi bi-cloud-upload me-2"></i>
-                                <h5 className="mb-0">Upload de Vistoria</h5>
+                            <div className="card-header d-flex justify-content-between align-items-center">
+                                <div className="d-flex align-items-center">
+                                    <h5 className="mb-0 me-2">Upload de Vistoria</h5>
+                                    <i className="bi bi-cloud-upload me-2"></i>
+                                </div>
+
+                                <button type="button" className="btn btn-outline-danger btn-sm" onClick={handleLogout}>Sair</button>
                             </div>
 
                             <div className="card-body">

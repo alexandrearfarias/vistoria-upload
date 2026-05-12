@@ -2,10 +2,9 @@ import { useGoogleLogin } from "@react-oauth/google";
 
 function Login({ onLogin }) {
   const login = useGoogleLogin({
-    scope: "https://www.googleapis.com/auth/drive.file",
+    scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.email",
 
     onSuccess: tokenResponse => {
-      console.log(tokenResponse);
       onLogin(tokenResponse);
     },
 
