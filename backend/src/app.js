@@ -4,7 +4,12 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origins: [
+        "http://localhost:5173",
+        "https://vistoria-upload.vercel.app"
+    ]
+}));
 app.use(express.json());
 
 app.use("/upload", uploadRoutes);
