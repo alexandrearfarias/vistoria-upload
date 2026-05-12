@@ -9,4 +9,8 @@ app.use(express.json());
 
 app.use("/upload", uploadRoutes);
 
+app.get("/fixa", (req,res) => {
+    res.send("API Online e Metendo.");
+});
+
 export default app;
